@@ -8,10 +8,8 @@ export default function layout({children}: {children: React.ReactNode}) {
     <main>
       <SideBar />
       <div className="pl-[53px]">
-        <div className="grid h-screen w-full">
-          <Header />
-          {children}
-        </div>
+        <Header />
+        <div className="grid h-screen w-full p-4">{children}</div>
       </div>
     </main>
   );

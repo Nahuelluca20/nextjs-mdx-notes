@@ -8,9 +8,18 @@ import {
   SquareUser,
   Triangle,
 } from "lucide-react";
+import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
+
+const Links = [
+  {href: "", name: "Playground", icon: <SquareTerminal className="size-5" />},
+  {href: "notes", name: "Notes", icon: <ScrollText className="size-5" />},
+  {href: "sarasa", name: "API", icon: <Code2 className="size-5" />},
+  {href: "sarasa", name: "Documentation", icon: <Book className="size-5" />},
+  {href: "sarasa", name: "Settings", icon: <Settings2 className="size-5" />},
+];
 
 export default function SideBar() {
   return (
@@ -21,61 +30,18 @@ export default function SideBar() {
         </Button>
       </div>
       <nav className="grid gap-1 p-2">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              aria-label="Playground"
-              className="rounded-lg bg-muted"
-              size="icon"
-              variant="ghost"
-            >
-              <SquareTerminal className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            Playground
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button aria-label="Models" className="rounded-lg" size="icon" variant="ghost">
-              <ScrollText className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            Notes
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button aria-label="API" className="rounded-lg" size="icon" variant="ghost">
-              <Code2 className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            API
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button aria-label="Documentation" className="rounded-lg" size="icon" variant="ghost">
-              <Book className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            Documentation
-          </TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button aria-label="Settings" className="rounded-lg" size="icon" variant="ghost">
-              <Settings2 className="size-5" />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="right" sideOffset={5}>
-            Settings
-          </TooltipContent>
-        </Tooltip>
+        {Links.map(({name, icon, href}) => (
+          <Tooltip key={name}>
+            <TooltipTrigger asChild>
+              <Button asChild aria-label={name} className="rounded-lg" size="icon" variant="ghost">
+                <Link href={`/dashboard/${href}`}>{icon}</Link>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right" sideOffset={5}>
+              {name}
+            </TooltipContent>
+          </Tooltip>
+        ))}
       </nav>
       <nav className="mt-auto grid gap-1 p-2">
         <Tooltip>
