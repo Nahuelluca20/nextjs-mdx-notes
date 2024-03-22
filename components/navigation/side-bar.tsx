@@ -1,8 +1,8 @@
 import {
   Book,
-  Bot,
   Code2,
   LifeBuoy,
+  ScrollText,
   Settings2,
   SquareTerminal,
   SquareUser,
@@ -39,11 +39,11 @@ export default function SideBar() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button aria-label="Models" className="rounded-lg" size="icon" variant="ghost">
-              <Bot className="size-5" />
+              <ScrollText className="size-5" />
             </Button>
           </TooltipTrigger>
           <TooltipContent side="right" sideOffset={5}>
-            Models
+            Notes
           </TooltipContent>
         </Tooltip>
         <Tooltip>
