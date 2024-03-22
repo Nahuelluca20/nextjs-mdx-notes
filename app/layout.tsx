@@ -5,6 +5,7 @@ import "./globals.css";
 
 import {cn} from "@/lib/utils";
 import {ThemeProvider} from "@/providers/theme-provider";
+import {TooltipProvider} from "@/components/ui/tooltip";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -30,7 +31,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
         >
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
