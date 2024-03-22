@@ -14,8 +14,8 @@ import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 
 export default function SideBar() {
   return (
-    <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
-      <div className="border-b p-2">
+    <aside className="inset-y fixed left-0 z-20 flex h-full flex-col border-r">
+      <div className="border-b flex justify-center items-center  h-[53px]">
         <Button aria-label="Home" size="icon" variant="outline">
           <Triangle className="size-5 fill-foreground" />
         </Button>
