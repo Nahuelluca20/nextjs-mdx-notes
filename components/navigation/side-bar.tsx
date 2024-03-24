@@ -44,8 +44,10 @@ export default function SideBar() {
       </nav>
       <nav className="mt-auto grid gap-1 p-2">
         <Tooltip>
-          <TooltipTrigger>
-            <ModeToggle />
+          <TooltipTrigger asChild>
+            <div>
+              <ModeToggle />
+            </div>
           </TooltipTrigger>
           <TooltipContent side="right" sideOffset={5}>
             Switch Theme
