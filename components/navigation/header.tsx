@@ -1,4 +1,4 @@
-import {Bird, Rabbit, Settings, Share, Turtle} from "lucide-react";
+import {Bird, Eye, Rabbit, Settings, Share, Turtle} from "lucide-react";
 
 import {Button} from "@/components/ui/button";
 import {
@@ -127,7 +127,7 @@ export default function Header() {
         </DrawerContent>
       </Drawer>
       <Button className="ml-auto gap-1.5 text-sm" size="sm" variant="outline">
-        <Share className="size-3.5" />
+        <Eye className="size-3.5" />
         Preview
       </Button>
     </header>

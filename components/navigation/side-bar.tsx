@@ -5,6 +5,7 @@ import {
   LifeBuoy,
   ScrollText,
   Settings2,
+  SquarePen,
   SquareTerminal,
   SquareUser,
 } from "lucide-react";
@@ -16,9 +17,8 @@ import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 const Links = [
   {href: "", name: "Playground", icon: <SquareTerminal className="size-5" />},
   {href: "notes", name: "Notes", icon: <ScrollText className="size-5" />},
-  {href: "sarasa", name: "API", icon: <Code2 className="size-5" />},
-  {href: "sarasa", name: "Documentation", icon: <Book className="size-5" />},
-  {href: "sarasa", name: "Settings", icon: <Settings2 className="size-5" />},
+  {href: "create-note", name: "Create Note", icon: <SquarePen className="size-5" />},
+  {href: "setting", name: "Settings", icon: <Settings2 className="size-5" />},
 ];
 
 export default function SideBar() {
