@@ -1,12 +1,12 @@
 import {
   Book,
   Code2,
+  LibraryBig,
   LifeBuoy,
   ScrollText,
   Settings2,
   SquareTerminal,
   SquareUser,
-  Triangle,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -24,9 +24,9 @@ const Links = [
 export default function SideBar() {
   return (
     <aside className="inset-y fixed left-0 z-20 flex h-full flex-col border-r">
-      <div className="border-b flex justify-center items-center  h-[53px]">
+      <div className="border-b flex justify-center items-center h-[53px]">
         <Button aria-label="Home" size="icon" variant="outline">
-          <Triangle className="size-5 fill-foreground" />
+          <LibraryBig className="size-5" />
         </Button>
       </div>
       <nav className="grid gap-1 p-2">

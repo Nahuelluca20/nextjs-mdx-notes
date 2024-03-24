@@ -5,7 +5,7 @@ import Header from "@/components/navigation/header";
 
 export default function layout({children}: {children: React.ReactNode}) {
   return (
-    <main>
+    <main color-scheme="ligth">
       <SideBar />
       <div className="pl-[53px]">
         <Header />
