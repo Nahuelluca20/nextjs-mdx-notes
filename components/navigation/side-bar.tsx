@@ -1,8 +1,5 @@
 import {
-  Book,
-  Code2,
   LibraryBig,
-  LifeBuoy,
   ScrollText,
   Settings2,
   SquarePen,
@@ -13,6 +10,8 @@ import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
+
+import {ModeToggle} from "../buttons/mode-toggle";
 
 const Links = [
   {href: "", name: "Playground", icon: <SquareTerminal className="size-5" />},
@@ -45,13 +44,11 @@ export default function SideBar() {
       </nav>
       <nav className="mt-auto grid gap-1 p-2">
         <Tooltip>
-          <TooltipTrigger asChild>
-            <Button aria-label="Help" className="mt-auto rounded-lg" size="icon" variant="ghost">
-              <LifeBuoy className="size-5" />
-            </Button>
+          <TooltipTrigger>
+            <ModeToggle />
           </TooltipTrigger>
           <TooltipContent side="right" sideOffset={5}>
-            Help
+            Switch Theme
           </TooltipContent>
         </Tooltip>
         <Tooltip>
