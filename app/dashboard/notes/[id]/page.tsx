@@ -5,6 +5,7 @@ import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {components, config} from "@/lib/config.markdoc";
 import {extractHeadings} from "@/lib/extract-headings";
+import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 import TableOfContents from "@/components/markdoc/table-of-contents";
 
 export default function Page({params}: {params: {id: string}}) {
@@ -40,21 +41,21 @@ export default function Page({params}: {params: {id: string}}) {
   const tableOfContents = extractHeadings(content);
 
   return (
-    <Card className="w-full md:max-w-[320px] lg:max-w-[400px]">
-      <CardHeader>
-        <CardTitle>Nota</CardTitle>
-        <div className="flex flex-wrap gap-1 pt-2">
-          <Badge>fetch</Badge>
-          <Badge>API</Badge>
-          <Badge>cache</Badge>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <p>{params.id}</p>
-        <TableOfContents tableOfContents={tableOfContents} />
-        {Markdoc.renderers.react(content, React, {components})}
-      </CardContent>
-      {/* <CardFooter className="gap-2 flex justify-end">
+    <section className="flex gap-8">
+      <Card className="w-full md:max-w-full lg:max-w-[800px]">
+        <CardHeader className="space-y-3">
+          <div className="flex items-center justify-between">
+            <CardTitle>Nota</CardTitle>
+            <TableOfContentsPopOver tableOfContents={tableOfContents} />
+          </div>
+          <div className="flex flex-wrap gap-1 pt-2">
+            <Badge>fetch</Badge>
+            <Badge>API</Badge>
+            <Badge>cache</Badge>
+          </div>
+        </CardHeader>
+        <CardContent>{Markdoc.renderers.react(content, React, {components})}</CardContent>
+        {/* <CardFooter className="gap-2 flex justify-end">
         <Button className="flex items-center justify-between gap-2" variant={"secondary"}>
           <Share className="size-3.5" />
           Share
@@ -63,6 +64,8 @@ export default function Page({params}: {params: {id: string}}) {
           <Link href={"notes/saasa"}>Open</Link>
         </Button>
       </CardFooter> */}
-    </Card>
+      </Card>
+      <TableOfContents tableOfContents={tableOfContents} />
+    </section>
   );
 }
