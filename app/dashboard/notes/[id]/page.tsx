@@ -3,10 +3,11 @@ import Markdoc from "@markdoc/markdoc";
 
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {components, config} from "@/lib/config.markdoc";
-import {extractHeadings} from "@/lib/extract-headings";
+import {components} from "@/utils/config.markdoc";
+import {extractHeadings} from "@/utils/extract-headings";
 import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 import TableOfContents from "@/components/markdoc/table-of-contents";
+import {parseMdx} from "@/utils/parse-mdx";
 
 export default function Page({params}: {params: {id: string}}) {
   const contentMDX = `
@@ -36,8 +37,7 @@ export default function Page({params}: {params: {id: string}}) {
 
   # Markdoc4
   `;
-  const ast = Markdoc.parse(contentMDX);
-  const content = Markdoc.transform(ast, config);
+  const content = parseMdx(contentMDX);
   const tableOfContents = extractHeadings(content);
 
   return (

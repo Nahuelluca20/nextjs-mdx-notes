@@ -13,7 +13,7 @@ export default function TableOfContentsPopOver({tableOfContents}: any) {
         <PopoverTrigger>Table of content</PopoverTrigger>
       </Button>
       <PopoverContent align="end" className="lg:hidden">
-        <div className="py-8 space-y-4">
+        <div className="py-2 space-y-4">
           <div className="text-2xl font-semibold">Table of content</div>
           <ul className="pl-2 space-y-2 list-disc list-inside text-blue-500">
             {items.map((item) => {
