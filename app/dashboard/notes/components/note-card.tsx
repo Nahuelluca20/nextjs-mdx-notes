@@ -1,15 +1,9 @@
 import {Share} from "lucide-react";
+import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 
 export default function NoteCard() {
   return (
@@ -30,7 +24,9 @@ export default function NoteCard() {
           <Share className="size-3.5" />
           Share
         </Button>
-        <Button>Open</Button>
+        <Button>
+          <Link href={"notes/saasa"}>Open</Link>
+        </Button>
       </CardFooter>
     </Card>
   );
