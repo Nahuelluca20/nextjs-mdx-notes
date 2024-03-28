@@ -1,7 +1,10 @@
+import Editor from "./components/editor";
+
 export default function page() {
   return (
-    <div>
-      <h1>create-note</h1>
-    </div>
+    <section>
+      <h1 className="text-xl font-bold">Create Note</h1>
+      <Editor />
+    </section>
   );
 }

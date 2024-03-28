@@ -11,31 +11,13 @@ import {parseMdx} from "@/utils/parse-mdx";
 
 export default function Page({params}: {params: {id: string}}) {
   const contentMDX = `
-  # Markdoc
+  ## Saraa
 
-  Markdoc is a markdown parser and renderer for React. It is designed to be highly customizable and extensible.
-  - It supports custom components and attributes.
+  hola como estas
 
-  > This is a blockquote
+  ### tercer titlu
 
-  ## Markdoc 2
-
-  Markdoc is a markdown parser and renderer for React. It is designed to be highly customizable and extensible.
-  - It supports custom components and attributes.
-
-  > This is a blockquoteMarkdoc is a markdown parser and renderer for React. It is designed to be highly customizable and extensible.
-  - It supports custom components and attributes.
-
-  > This is a blockquoteMarkdoc is a markdown parser and renderer for React. It is designed to be highly customizable and extensible.
-  - It supports custom components and attributes.
-
-  > This is a blockquoteMarkdoc is a markdown parser and renderer for React. It is designed to be highly customizable and extensible.
-  - It supports custom components and attributes.
-
-  > This is a blockquote
-
-
-  # Markdoc4
+  # Priemro
   `;
   const content = parseMdx(contentMDX);
   const tableOfContents = extractHeadings(content);
