@@ -1,6 +1,5 @@
 "use client";
 import {useEffect, useState} from "react";
-import Markdoc from "@markdoc/markdoc";
 import React from "react";
 import prism from "prismjs";
 import {Eye} from "lucide-react";
@@ -11,7 +10,6 @@ import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
 import {Card, CardContent} from "@/components/ui/card";
 import {parseMdx} from "@/utils/parse-mdx";
-import {components} from "@/utils/config.markdoc";
 
 import "./mdx.css";
 import MdxRender from "@/components/markdoc/mdx-render";
@@ -22,8 +20,6 @@ export default function Editor() {
   const [mdxContent, setMdxContent] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const content = parseMdx(mdxContent);
-
-  console.log(mdxContent);
 
   useEffect(() => {
     prism.highlightAll();

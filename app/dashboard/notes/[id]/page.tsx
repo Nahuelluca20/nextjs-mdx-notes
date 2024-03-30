@@ -17,6 +17,9 @@ export default function Page({params}: {params: {id: string}}) {
 
   ### tercer titlu
 
+
+  ## dsadas
+
   # Priemro
   `;
   const content = parseMdx(contentMDX);

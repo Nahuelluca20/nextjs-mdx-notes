@@ -24,7 +24,7 @@ export default function NoteCard() {
           <Share className="size-3.5" />
           Share
         </Button>
-        <Button>
+        <Button asChild>
           <Link href={"notes/saasa"}>Open</Link>
         </Button>
       </CardFooter>

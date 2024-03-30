@@ -12,7 +12,7 @@ export default function MdxRender({content}: {content: RenderableTreeNodes}) {
   });
 
   return (
-    <div className="w-full lg:min-w-[500px] lg:max-w-[400px] mx-auto prose prose-sm">
+    <div className="w-full lg:min-w-[500px] px-2 max-w-full mx-auto prose prose-sm">
       {Markdoc.renderers.react(content, React, {components})}
     </div>
   );
