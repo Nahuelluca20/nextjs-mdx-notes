@@ -3,7 +3,10 @@ import {useEffect, useState} from "react";
 import Markdoc from "@markdoc/markdoc";
 import React from "react";
 import prism from "prismjs";
+import {Eye} from "lucide-react";
 
+import {ScrollArea} from "@/components/ui/scroll-area";
+import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
 import {Card, CardContent} from "@/components/ui/card";
@@ -11,10 +14,13 @@ import {parseMdx} from "@/utils/parse-mdx";
 import {components} from "@/utils/config.markdoc";
 
 import "./mdx.css";
+import MdxRender from "@/components/markdoc/mdx-render";
+
 import {sendMdx} from "../queries";
 
 export default function Editor() {
   const [mdxContent, setMdxContent] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
   const content = parseMdx(mdxContent);
 
   console.log(mdxContent);
@@ -24,24 +30,48 @@ export default function Editor() {
   });
 
   return (
-    <div className="gap-4 flex items-start mt-2">
-      <form action={sendMdx} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
-        <Textarea
-          className="min-h-[500px] "
-          id="content"
-          name="content"
-          placeholder="Type your note here"
-          onChange={(e) => setMdxContent(e.target.value)}
-        />
-        <Button className="w-24">Submit</Button>
-      </form>
-      <Card className="w-full h-full min-h-[500px]">
-        <CardContent className="w-full py-2">
-          <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-sm">
-            {Markdoc.renderers.react(content, React, {components})}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+    <section>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl font-bold">Create Note</h1>
+        <Sheet>
+          <Button
+            asChild
+            className="lg:hidden ml-auto gap-1.5 text-sm"
+            size="sm"
+            variant="outline"
+            onClick={() => setOpen(!open)}
+          >
+            <SheetTrigger>
+              <Eye className="size-3.5" />
+              Preview
+            </SheetTrigger>
+          </Button>
+          <SheetContent className="lg:hidden min-h-[500px] w-full" side={"bottom"}>
+            <ScrollArea className="h-[500px] w-full rounded-md border p-3 mt-4">
+              <MdxRender content={content} />
+            </ScrollArea>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      <div className="gap-4 flex flex-col lg:flex-row items-start mt-2">
+        <form action={sendMdx} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
+          <Textarea
+            className="min-h-[500px] w-full max-w-screen"
+            id="content"
+            name="content"
+            placeholder="Type your note here"
+            onChange={(e) => setMdxContent(e.target.value)}
+          />
+          <Button className="w-24">Submit</Button>
+        </form>
+
+        <Card className="hidden lg:block w-full h-full md:min-h-[500px]">
+          <CardContent className="w-full py-2">
+            <MdxRender content={content} />
+          </CardContent>
+        </Card>
+      </div>
+    </section>
   );
 }

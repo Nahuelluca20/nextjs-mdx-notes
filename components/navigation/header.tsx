@@ -126,10 +126,6 @@ export default function Header() {
           </form>
         </DrawerContent>
       </Drawer>
-      <Button className="ml-auto gap-1.5 text-sm" size="sm" variant="outline">
-        <Eye className="size-3.5" />
-        Preview
-      </Button>
     </header>
   );
 }
