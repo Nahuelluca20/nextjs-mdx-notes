@@ -9,6 +9,7 @@ import {Card, CardContent} from "@/components/ui/card";
 import {parseMdx} from "@/utils/parse-mdx";
 import {components} from "@/utils/config.markdoc";
 
+import "./mdx.css";
 import {sendMdx} from "../queries";
 
 export default function Editor() {
@@ -18,8 +19,8 @@ export default function Editor() {
   console.log(mdxContent);
 
   return (
-    <div className="gap-4 flex">
-      <form action={sendMdx} className="space-y-4 w-full md:max-w-full lg:max-w-[800px]">
+    <div className="gap-4 flex items-start mt-2">
+      <form action={sendMdx} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
         <Textarea
           className="min-h-[500px] "
           id="content"
@@ -27,11 +28,13 @@ export default function Editor() {
           placeholder="Type your note here"
           onChange={(e) => setMdxContent(e.target.value)}
         />
-        <Button>Submit</Button>
+        <Button className="w-24">Submit</Button>
       </form>
       <Card className="w-full h-full min-h-[500px]">
         <CardContent className="w-full py-2">
-          {Markdoc.renderers.react(content, React, {components})}
+          <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-md lg:prose-lg">
+            {Markdoc.renderers.react(content, React, {components})}
+          </div>
         </CardContent>
       </Card>
     </div>
