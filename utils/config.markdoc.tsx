@@ -1,6 +1,5 @@
 import {Config} from "@markdoc/markdoc";
 
-import Heading from "@/components/markdoc/heading";
 import {Fence} from "@/components/markdoc/fence";
 import {Callout} from "@/components/markdoc/callout";
 
@@ -9,14 +8,26 @@ const config: Config = {
     paragraph: {
       render: "Paragraph",
     },
-    heading: {
-      render: "Heading",
+    fence: {
+      render: "Fence",
       attributes: {
-        level: {type: String},
+        language: {
+          type: String,
+          default: "javascript",
+        },
       },
     },
   },
   tags: {
+    fence: {
+      render: "Fence",
+      attributes: {
+        language: {
+          type: String,
+          default: "javascript",
+        },
+      },
+    },
     callout: {
       render: "Callout",
       attributes: {
@@ -33,7 +44,6 @@ const components = {
   Paragraph: ({children}: any) => {
     return <p>{children}</p>;
   },
-  Heading: Heading,
   Callout: Callout,
   Fence: Fence,
 };

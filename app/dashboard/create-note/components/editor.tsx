@@ -1,7 +1,8 @@
 "use client";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Markdoc from "@markdoc/markdoc";
 import React from "react";
+import prism from "prismjs";
 
 import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
@@ -17,6 +18,10 @@ export default function Editor() {
   const content = parseMdx(mdxContent);
 
   console.log(mdxContent);
+
+  useEffect(() => {
+    prism.highlightAll();
+  });
 
   return (
     <div className="gap-4 flex items-start mt-2">
