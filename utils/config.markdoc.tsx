@@ -1,7 +1,8 @@
 import {Config} from "@markdoc/markdoc";
 
-import Callout from "@/components/markdoc/callout";
 import Heading from "@/components/markdoc/heading";
+import {Fence} from "@/components/markdoc/fence";
+import {Callout} from "@/components/markdoc/callout";
 
 const config: Config = {
   nodes: {
@@ -30,10 +31,11 @@ const config: Config = {
 
 const components = {
   Paragraph: ({children}: any) => {
-    return <div className="text-base pb-2">{children}</div>;
+    return <p>{children}</p>;
   },
   Heading: Heading,
   Callout: Callout,
+  Fence: Fence,
 };
 
 export {config, components};

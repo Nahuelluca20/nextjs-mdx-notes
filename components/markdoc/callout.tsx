@@ -13,5 +13,5 @@ type CalloutProps = {
 // }
 
 export function Callout({children}: {children: React.ReactNode}) {
-  return <div className="callout text-red-300">{children}</div>;
+  return <div className="callout">{children}</div>;
 }

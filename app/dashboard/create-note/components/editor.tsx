@@ -32,7 +32,7 @@ export default function Editor() {
       </form>
       <Card className="w-full h-full min-h-[500px]">
         <CardContent className="w-full py-2">
-          <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-md lg:prose-lg">
+          <div className="lg:min-w-[800px] lg:max-w-[800px] mx-auto prose prose-sm">
             {Markdoc.renderers.react(content, React, {components})}
           </div>
         </CardContent>
