@@ -1,4 +1,4 @@
-import {Bird, Eye, Rabbit, Settings, Share, Turtle} from "lucide-react";
+import {Bird, Rabbit, Settings, Turtle} from "lucide-react";
 
 import {Button} from "@/components/ui/button";
 import {

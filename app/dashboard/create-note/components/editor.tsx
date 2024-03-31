@@ -10,7 +10,6 @@ import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
 import {Card, CardContent} from "@/components/ui/card";
 import {parseMdx} from "@/utils/parse-mdx";
-
 import "./mdx.css";
 import MdxRender from "@/components/markdoc/mdx-render";
 
