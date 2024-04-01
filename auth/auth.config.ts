@@ -7,10 +7,12 @@ import {db} from "@/db";
 export const authConfig = {
   secret: process.env.AUTH_SECRET!,
   adapter: DrizzleAdapter(db),
-  session: {
-    strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60,
-  },
   providers: [Github],
-  callbacks: {},
+  callbacks: {
+    async session({session, user}) {
+      session.user.id = user.id;
+
+      return session;
+    },
+  },
 } satisfies NextAuthConfig;
