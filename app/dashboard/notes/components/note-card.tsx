@@ -5,7 +5,19 @@ import {Button} from "@/components/ui/button";
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 
-export default function NoteCard() {
+export default function NoteCard({
+  title,
+  description,
+  tags,
+  content,
+  userId,
+}: {
+  title: string;
+  description: string;
+  tags: string;
+  content: string;
+  userId: string;
+}) {
   return (
     <Card className="w-full md:max-w-[320px] lg:max-w-[400px]">
       <CardHeader>
