@@ -15,7 +15,6 @@ export default async function page() {
       {notes.map((note) => (
         <NoteCard
           key={note.id}
-          content={note.content || ""}
           description={note.description || ""}
           tags={note.tags || ""}
           title={note.title || ""}

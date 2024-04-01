@@ -15,21 +15,20 @@ export default async function NoteCard({
   title: string;
   description: string;
   tags: string;
-  content: string;
   userId: string;
 }) {
   const session = await auth();
 
-  console.log(session);
+  const parseTags = tags.split(",").map((tag) => tag.trim());
 
   return (
     <Card className="w-full md:max-w-[320px] lg:max-w-[400px]">
       <CardHeader>
         <CardTitle className="text-xl">{title}</CardTitle>
         <div className="flex flex-wrap gap-1 pt-2">
-          <Badge>fetch</Badge>
-          <Badge>API</Badge>
-          <Badge>cache</Badge>
+          {parseTags.map((tag) => (
+            <Badge key={tag}>{tag}</Badge>
+          ))}
         </div>
       </CardHeader>
       <CardContent>
