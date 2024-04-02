@@ -12,7 +12,7 @@ import {parseMdx} from "@/utils/parse-mdx";
 import "./mdx.css";
 import MdxRender from "@/components/markdoc/mdx-render";
 
-import {sendMdx} from "../queries";
+import {createNote} from "../queries";
 
 export default function Editor() {
   const [mdxContent, setMdxContent] = useState<string>("");
@@ -45,7 +45,7 @@ export default function Editor() {
       </div>
 
       <div className="gap-4 flex flex-col lg:flex-row items-start mt-2">
-        <form action={sendMdx} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
+        <form action={createNote} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
           <Textarea
             className="min-h-[500px] w-full max-w-screen"
             id="content"

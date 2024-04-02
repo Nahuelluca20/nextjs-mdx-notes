@@ -1,14 +1,12 @@
 import React from "react";
-import Markdoc from "@markdoc/markdoc";
-import marked from "marked";
 
-import {Badge} from "@/components/ui/badge";
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {components} from "@/utils/config.markdoc";
+import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import {extractHeadings} from "@/utils/extract-headings";
-import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 import TableOfContents from "@/components/markdoc/table-of-contents";
+import "../../create-note/components/mdx.css";
 import {parseMdx} from "@/utils/parse-mdx";
+import MdxRender from "@/components/markdoc/mdx-render";
+import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 
 import {getNoteById} from "../queries";
 
@@ -19,40 +17,22 @@ export default async function Page({params}: {params: {id: string}}) {
 
   const tableOfContents = extractHeadings(content);
 
-  const tags = note.data?.tags || "";
-
-  const parseTags = tags.split(",").map((tag) => tag.trim());
-
   return (
     <section className="flex gap-8">
-      <Card className="w-full md:max-w-full lg:max-w-[800px]">
+      <Card className="max-w-[300px] semi:max-w-[400px] sm:max-w-[500px] md:max-w-full lg:max-w-[600px] xl:max-w-[800px]">
         <CardHeader className="space-y-3">
-          <div className="flex items-center justify-between">
-            <CardTitle>Nota</CardTitle>
+          <div className="flex items-center justify-end">
             <TableOfContentsPopOver tableOfContents={tableOfContents} />
           </div>
-          <div className="flex flex-wrap gap-1 pt-2">
-            {parseTags.map((tag) => (
-              <Badge key={tag}>{tag}</Badge>
-            ))}
-          </div>
         </CardHeader>
+
         <CardContent>
-          <div className="w-full lg:min-w-[500px] px-2 max-w-full mx-auto prose prose-sm">
-            {Markdoc.renderers.react(content, React, {components})}
-          </div>
+          <MdxRender content={JSON.parse(JSON.stringify(content))} />
         </CardContent>
-        {/* <CardFooter className="gap-2 flex justify-end">
-        <Button className="flex items-center justify-between gap-2" variant={"secondary"}>
-          <Share className="size-3.5" />
-          Share
-        </Button>
-        <Button>
-          <Link href={"notes/saasa"}>Open</Link>
-        </Button>
-      </CardFooter> */}
       </Card>
-      <TableOfContents tableOfContents={tableOfContents} />
+      <div className="relative">
+        <TableOfContents tableOfContents={tableOfContents} />
+      </div>
     </section>
   );
 }

@@ -20,6 +20,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        semi: "500px",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },

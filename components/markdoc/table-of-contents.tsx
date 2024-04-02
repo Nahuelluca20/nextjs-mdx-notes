@@ -4,7 +4,7 @@ export default function TableOfContents({tableOfContents}: any) {
   );
 
   return (
-    <div className="hidden lg:block py-8 space-y-4 min-w-[300px] mx-2">
+    <div className="fixed hidden lg:block py-8 space-y-4 min-w-[300px] mx-2">
       <div className="text-2xl font-semibold">Table of content</div>
       <ul className="pl-2 space-y-2 list-disc list-inside text-blue-500">
         {items.map((item) => {

@@ -1,12 +1,15 @@
 "use server";
 
 import {eq} from "drizzle-orm";
+import {z} from "zod";
 
 import {db} from "@/db";
 import {action} from "@/lib/safe-action";
 import {note} from "@/db/schema/note";
 
-import {getNoteByIdSchema} from "./schema/get-note";
+const getNoteByIdSchema = z.object({
+  userId: z.string(),
+});
 
 export const getNotes = async () => {
   const result = await db
