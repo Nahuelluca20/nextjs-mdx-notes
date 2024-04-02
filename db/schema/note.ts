@@ -4,7 +4,9 @@ import {createId} from "@paralleldrive/cuid2";
 import {users} from "./user";
 
 export const note = sqliteTable("note", {
-  id: text("id").$defaultFn(() => createId()),
+  id: text("id")
+    .$defaultFn(() => createId())
+    .primaryKey(),
   title: text("title"),
   description: text("description"),
   tags: text("tags"),

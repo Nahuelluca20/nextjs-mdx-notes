@@ -3,27 +3,24 @@ import Markdoc from "@markdoc/markdoc";
 
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {components} from "@/utils/config.markdoc";
+import {components, markdownParser} from "@/utils/config.markdoc";
 import {extractHeadings} from "@/utils/extract-headings";
 import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 import TableOfContents from "@/components/markdoc/table-of-contents";
 import {parseMdx} from "@/utils/parse-mdx";
 
-export default function Page({params}: {params: {id: string}}) {
-  const contentMDX = `
-  ## Saraa
+import {getNoteById} from "../queries";
 
-  hola como estas
+export default async function Page({params}: {params: {id: string}}) {
+  const note = await getNoteById({userId: params.id});
 
-  ### tercer titlu
+  const contentMDX = `## Saraahola como estas ### tercer titlu ## dsadas # Priemro`;
 
-
-  ## dsadas
-
-  # Priemro
-  `;
-  const content = parseMdx(contentMDX);
+  // console.log(note.data?.content);
+  const content = markdownParser(contentMDX || "");
   const tableOfContents = extractHeadings(content);
+
+  // const parseTags = tags.split(",").map((tag) => tag.trim());
 
   return (
     <section className="flex gap-8">

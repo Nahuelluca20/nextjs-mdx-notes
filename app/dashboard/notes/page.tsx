@@ -16,6 +16,7 @@ export default async function page() {
         <NoteCard
           key={note.id}
           description={note.description || ""}
+          noteId={note.id || ""}
           tags={note.tags || ""}
           title={note.title || ""}
           userId={note.userId}

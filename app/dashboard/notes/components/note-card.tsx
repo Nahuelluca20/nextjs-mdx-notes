@@ -7,11 +7,13 @@ import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components
 import {auth} from "@/auth/auth";
 
 export default async function NoteCard({
+  noteId,
   title,
   description,
   tags,
   userId,
 }: {
+  noteId: string;
   title: string;
   description: string;
   tags: string;
@@ -43,7 +45,7 @@ export default async function NoteCard({
           Share
         </Button>
         <Button asChild>
-          <Link href={"notes/saasa"}>Open</Link>
+          <Link href={`notes/${noteId}`}>Open</Link>
         </Button>
       </CardFooter>
     </Card>
