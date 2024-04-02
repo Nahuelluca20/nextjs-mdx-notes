@@ -6,6 +6,8 @@ import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {auth} from "@/auth/auth";
 
+import {deleteNote} from "../queries";
+
 export default async function NoteCard({
   noteId,
   title,
@@ -37,9 +39,14 @@ export default async function NoteCard({
         <p>{description}</p>
       </CardContent>
       <CardFooter className="gap-2 flex justify-end">
-        <Button disabled={userId !== session?.user.id} variant={"destructive"}>
-          Delete
-        </Button>
+        <form action={deleteNote}>
+          <input id="userId" name="userId" type="hidden" value={session?.userId} />
+          <input id="noteUserId" name="noteUserId" type="hidden" value={userId} />
+          <input id="noteId" name="noteId" type="hidden" value={noteId} />
+          <Button disabled={userId !== session?.user.id} type="submit" variant={"destructive"}>
+            Delete
+          </Button>
+        </form>
         <Button className="flex items-center justify-between gap-2" variant={"secondary"}>
           <Share className="size-3.5" />
           Share
