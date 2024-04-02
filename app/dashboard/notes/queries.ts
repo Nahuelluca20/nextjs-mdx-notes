@@ -29,11 +29,7 @@ export const getNotes = async () => {
 export const getNoteById = action(getNoteByIdSchema, async ({userId}) => {
   const result = await db
     .select({
-      title: note.title,
-      description: note.description,
       content: note.content,
-      tags: note.tags,
-      userId: note.userId,
     })
     .from(note)
     .where(eq(note.id, userId));

@@ -1,12 +1,10 @@
 "use server";
 
-import {eq} from "drizzle-orm";
 import {z} from "zod";
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 
 import {db} from "@/db";
-import {action} from "@/lib/safe-action";
 import {note} from "@/db/schema/note";
 
 export const createNote = async (formData: FormData) => {

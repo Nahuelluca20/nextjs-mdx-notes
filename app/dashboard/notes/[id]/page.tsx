@@ -3,7 +3,7 @@ import React from "react";
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import {extractHeadings} from "@/utils/extract-headings";
 import TableOfContents from "@/components/markdoc/table-of-contents";
-import "../../create-note/components/mdx.css";
+import "@/app/dashboard/styles/mdx.css";
 import {parseMdx} from "@/utils/parse-mdx";
 import MdxRender from "@/components/markdoc/mdx-render";
 import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";

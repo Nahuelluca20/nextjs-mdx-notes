@@ -12,9 +12,7 @@ import {parseMdx} from "@/utils/parse-mdx";
 import "@/app/dashboard/styles/mdx.css";
 import MdxRender from "@/components/markdoc/mdx-render";
 
-import {createNote} from "../queries";
-
-export default function Editor() {
+export default function PlaygroundMdx() {
   const [mdxContent, setMdxContent] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const content = parseMdx(mdxContent);
@@ -22,7 +20,7 @@ export default function Editor() {
   return (
     <section>
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-bold">Create Note</h1>
+        <h1 className="text-xl font-bold">Playground</h1>
         <Sheet>
           <Button
             asChild
@@ -45,7 +43,7 @@ export default function Editor() {
       </div>
 
       <div className="gap-4 flex flex-col lg:flex-row items-start mt-2">
-        <form action={createNote} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
+        <div className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
           <Textarea
             className="min-h-[500px] w-full max-w-screen"
             id="content"
@@ -53,8 +51,7 @@ export default function Editor() {
             placeholder="Type your note here"
             onChange={(e) => setMdxContent(e.target.value)}
           />
-          <Button className="w-24">Submit</Button>
-        </form>
+        </div>
 
         <Card className="hidden lg:block w-full h-full md:min-h-[500px]">
           <CardContent className="w-full py-2">

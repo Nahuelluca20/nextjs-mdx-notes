@@ -16,7 +16,7 @@ import {ModeToggle} from "../buttons/mode-toggle";
 const Links = [
   {href: "", name: "Playground", icon: <SquareTerminal className="size-5" />},
   {href: "notes", name: "Notes", icon: <ScrollText className="size-5" />},
-  {href: "create-note", name: "Create Note", icon: <SquarePen className="size-5" />},
+  {href: "playground", name: "Playground", icon: <SquarePen className="size-5" />},
   {href: "setting", name: "Settings", icon: <Settings2 className="size-5" />},
 ];
 
