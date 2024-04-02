@@ -18,7 +18,7 @@ export default async function Page({params}: {params: {id: string}}) {
   const tableOfContents = extractHeadings(content);
 
   return (
-    <section className="flex gap-8">
+    <section className="flex gap-4">
       <Card className="max-w-[300px] semi:max-w-[400px] sm:max-w-[500px] md:max-w-full lg:max-w-[600px] xl:max-w-[800px]">
         <CardHeader className="space-y-3">
           <div className="flex items-center justify-end">
