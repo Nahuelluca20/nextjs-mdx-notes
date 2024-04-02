@@ -1,4 +1,4 @@
-import Markdoc, {Config, RenderableTreeNodes} from "@markdoc/markdoc";
+import {Config} from "@markdoc/markdoc";
 
 import {Fence} from "@/components/markdoc/fence";
 import {Callout} from "@/components/markdoc/callout";
@@ -57,7 +57,3 @@ const components = {
 };
 
 export {config, components};
-
-export function markdownParser(markdown: string): RenderableTreeNodes {
-  return Markdoc.transform(Markdoc.parse(markdown), config);
-}

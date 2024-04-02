@@ -1,9 +1,10 @@
 import React from "react";
 import Markdoc from "@markdoc/markdoc";
+import marked from "marked";
 
 import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
-import {components, markdownParser} from "@/utils/config.markdoc";
+import {components} from "@/utils/config.markdoc";
 import {extractHeadings} from "@/utils/extract-headings";
 import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 import TableOfContents from "@/components/markdoc/table-of-contents";
@@ -14,13 +15,13 @@ import {getNoteById} from "../queries";
 export default async function Page({params}: {params: {id: string}}) {
   const note = await getNoteById({userId: params.id});
 
-  const contentMDX = `## Saraahola como estas ### tercer titlu ## dsadas # Priemro`;
+  const content = await parseMdx(note.data?.content || "");
 
-  // console.log(note.data?.content);
-  const content = markdownParser(contentMDX || "");
   const tableOfContents = extractHeadings(content);
 
-  // const parseTags = tags.split(",").map((tag) => tag.trim());
+  const tags = note.data?.tags || "";
+
+  const parseTags = tags.split(",").map((tag) => tag.trim());
 
   return (
     <section className="flex gap-8">
@@ -31,12 +32,16 @@ export default async function Page({params}: {params: {id: string}}) {
             <TableOfContentsPopOver tableOfContents={tableOfContents} />
           </div>
           <div className="flex flex-wrap gap-1 pt-2">
-            <Badge>fetch</Badge>
-            <Badge>API</Badge>
-            <Badge>cache</Badge>
+            {parseTags.map((tag) => (
+              <Badge key={tag}>{tag}</Badge>
+            ))}
           </div>
         </CardHeader>
-        <CardContent>{Markdoc.renderers.react(content, React, {components})}</CardContent>
+        <CardContent>
+          <div className="w-full lg:min-w-[500px] px-2 max-w-full mx-auto prose prose-sm">
+            {Markdoc.renderers.react(content, React, {components})}
+          </div>
+        </CardContent>
         {/* <CardFooter className="gap-2 flex justify-end">
         <Button className="flex items-center justify-between gap-2" variant={"secondary"}>
           <Share className="size-3.5" />

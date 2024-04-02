@@ -1,7 +1,6 @@
 "use client";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import React from "react";
-import prism from "prismjs";
 import {Eye} from "lucide-react";
 
 import {ScrollArea} from "@/components/ui/scroll-area";
@@ -19,10 +18,6 @@ export default function Editor() {
   const [mdxContent, setMdxContent] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const content = parseMdx(mdxContent);
-
-  useEffect(() => {
-    prism.highlightAll();
-  });
 
   return (
     <section>
