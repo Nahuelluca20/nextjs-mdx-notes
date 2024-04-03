@@ -14,7 +14,7 @@ import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 import {ModeToggle} from "../buttons/mode-toggle";
 
 const Links = [
-  {href: "", name: "Playground", icon: <SquareTerminal className="size-5" />},
+  {href: "", name: "Create", icon: <SquareTerminal className="size-5" />},
   {href: "notes", name: "Notes", icon: <ScrollText className="size-5" />},
   {href: "playground", name: "Playground", icon: <SquarePen className="size-5" />},
   {href: "setting", name: "Settings", icon: <Settings2 className="size-5" />},

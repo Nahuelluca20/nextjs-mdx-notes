@@ -2,6 +2,7 @@
 import {useState} from "react";
 import React from "react";
 import {Eye} from "lucide-react";
+import {useSearchParams} from "next/navigation";
 
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
@@ -16,8 +17,13 @@ import {createNote} from "../queries";
 
 export default function Editor() {
   const [mdxContent, setMdxContent] = useState<string>("");
+  const searchParams = useSearchParams();
   const [open, setOpen] = useState<boolean>(false);
   const content = parseMdx(mdxContent);
+
+  const title = searchParams.get("title");
+  const description = searchParams.get("description");
+  const tags = searchParams.get("tags");
 
   return (
     <section>
@@ -46,11 +52,16 @@ export default function Editor() {
 
       <div className="gap-4 flex flex-col lg:flex-row items-start mt-2">
         <form action={createNote} className="grid gap-2 w-full md:max-w-full lg:max-w-[800px]">
+          <input id="description" name="description" type="hidden" value={String(description)} />
+          <input id="tags" name="tags" type="hidden" value={String(tags)} />
+          <input id="title" name="title" type="hidden" value={String(title)} />
+
           <Textarea
             className="min-h-[500px] w-full max-w-screen"
             id="content"
             name="content"
             placeholder="Type your note here"
+            value={mdxContent}
             onChange={(e) => setMdxContent(e.target.value)}
           />
           <Button className="w-24">Submit</Button>

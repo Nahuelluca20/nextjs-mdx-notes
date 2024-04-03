@@ -10,9 +10,9 @@ export const moveCreateNoteForm = async (formData: FormData) => {
   });
 
   const vadidateSchema = createNoteSchema.safeParse({
-    title: formData.get("title"),
-    description: formData.get("description"),
-    tags: formData.get("tags"),
+    title: String(formData.get("title")),
+    description: String(formData.get("description")),
+    tags: String(formData.get("tags")),
   });
 
   if (!vadidateSchema.success) {
