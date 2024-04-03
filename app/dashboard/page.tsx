@@ -1,107 +1,43 @@
-import {Bird, Rabbit, Turtle} from "lucide-react";
-
+import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {Textarea} from "@/components/ui/textarea";
+
+import {moveCreateNoteForm} from "./queries";
 
 export default function Dashboard() {
   return (
     <div className="flex flex-col">
       <main className="grid flex-1 gap-4 overflow-auto md:grid-cols-2 lg:grid-cols-3">
         <div className="relative flex-col items-start gap-8 md:flex">
-          <form className="grid w-full items-start gap-6">
+          <form action={moveCreateNoteForm} className="grid w-full items-start gap-6">
             <fieldset className="grid gap-6 rounded-lg border p-4">
-              <legend className="-ml-1 px-1 text-sm font-medium">Settings</legend>
+              <legend className="-ml-1 px-1 text-sm font-medium">Create Note</legend>
               <div className="grid gap-3">
-                <Label htmlFor="model">Model</Label>
-                <Select>
-                  <SelectTrigger className="items-start [&_[data-description]]:hidden" id="model">
-                    <SelectValue placeholder="Select a model" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="genesis">
-                      <div className="flex items-start gap-3 text-muted-foreground">
-                        <Rabbit className="size-5" />
-                        <div className="grid gap-0.5">
-                          <p>
-                            Neural <span className="font-medium text-foreground">Genesis</span>
-                          </p>
-                          <p data-description className="text-xs">
-                            Our fastest model for general use cases.
-                          </p>
-                        </div>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="explorer">
-                      <div className="flex items-start gap-3 text-muted-foreground">
-                        <Bird className="size-5" />
-                        <div className="grid gap-0.5">
-                          <p>
-                            Neural <span className="font-medium text-foreground">Explorer</span>
-                          </p>
-                          <p data-description className="text-xs">
-                            Performance and speed for efficiency.
-                          </p>
-                        </div>
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="quantum">
-                      <div className="flex items-start gap-3 text-muted-foreground">
-                        <Turtle className="size-5" />
-                        <div className="grid gap-0.5">
-                          <p>
-                            Neural <span className="font-medium text-foreground">Quantum</span>
-                          </p>
-                          <p data-description className="text-xs">
-                            The most powerful model for complex computations.
-                          </p>
-                        </div>
-                      </div>
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="title">Title</Label>
+                <Input id="title" name="title" placeholder="Cache in NextJS" type="text" />
               </div>
-              <div className="grid gap-3">
-                <Label htmlFor="temperature">Temperature</Label>
-                <Input id="temperature" placeholder="0.4" type="number" />
+              <div className="grid">
+                <Label htmlFor="tags">tags</Label>
+                <Input
+                  className="mt-3"
+                  id="tags"
+                  name="tags"
+                  placeholder="cache, nextjs, tailwind"
+                  type="text"
+                />
+                <p className="pl-1 pt-1 text-xs md:text-sm font-medium text-muted-foreground">
+                  Separate tags by commas. Max 3 tags.
+                </p>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="grid gap-3">
-                  <Label htmlFor="top-p">Top P</Label>
-                  <Input id="top-p" placeholder="0.7" type="number" />
-                </div>
-                <div className="grid gap-3">
-                  <Label htmlFor="top-k">Top K</Label>
-                  <Input id="top-k" placeholder="0.0" type="number" />
-                </div>
+              <div className="space-y-3">
+                <Label htmlFor="description">Description</Label>
+
+                <Textarea id="description" name="description" placeholder="write a description" />
               </div>
-            </fieldset>
-            <fieldset className="grid gap-6 rounded-lg border p-4">
-              <legend className="-ml-1 px-1 text-sm font-medium">Messages</legend>
-              <div className="grid gap-3">
-                <Label htmlFor="role">Role</Label>
-                <Select defaultValue="system">
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a role" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="system">System</SelectItem>
-                    <SelectItem value="user">User</SelectItem>
-                    <SelectItem value="assistant">Assistant</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="content">Content</Label>
-                <Textarea className="min-h-[9.5rem]" id="content" placeholder="You are a..." />
-              </div>
+              <Button className="w-24" type="submit">
+                Create Note
+              </Button>
             </fieldset>
           </form>
         </div>
