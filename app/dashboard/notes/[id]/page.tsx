@@ -1,4 +1,5 @@
 import React from "react";
+import {Metadata} from "next";
 
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
 import {extractHeadings} from "@/utils/extract-headings";
@@ -8,12 +9,23 @@ import {parseMdx} from "@/utils/parse-mdx";
 import MdxRender from "@/components/markdoc/mdx-render";
 import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 
-import {getNoteById} from "../queries";
+import {getNoteById} from "./queries";
+
+export async function generateMetadata(params: {id: string}): Promise<Metadata> {
+  const note = await getNoteById(params.id);
+
+  return {
+    title: note?.title || "MDX Notes",
+    description:
+      note?.description ||
+      "Create your MDX Notes with NextJS, Shadcn/ui, Markdoc, Drizzle ORM, Turso and authjs/next-auth",
+  };
+}
 
 export default async function Page({params}: {params: {id: string}}) {
-  const note = await getNoteById({userId: params.id});
+  const note = await getNoteById(params.id);
 
-  const content = await parseMdx(note.data?.content || "");
+  const content = await parseMdx(note?.content || "");
 
   const tableOfContents = extractHeadings(content);
 

@@ -1,16 +1,10 @@
 "use server";
-
 import {eq} from "drizzle-orm";
 import {z} from "zod";
 import {revalidatePath} from "next/cache";
 
 import {db} from "@/db";
-import {action} from "@/lib/safe-action";
 import {note} from "@/db/schema/note";
-
-const getNoteByIdSchema = z.object({
-  userId: z.string(),
-});
 
 export const getNotes = async () => {
   const result = await db
@@ -25,17 +19,6 @@ export const getNotes = async () => {
 
   return result;
 };
-
-export const getNoteById = action(getNoteByIdSchema, async ({userId}) => {
-  const result = await db
-    .select({
-      content: note.content,
-    })
-    .from(note)
-    .where(eq(note.id, userId));
-
-  return result[0];
-});
 
 export const deleteNote = async (formData: FormData) => {
   const deleteNoteSchema = z.object({
