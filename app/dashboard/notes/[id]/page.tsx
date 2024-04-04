@@ -10,8 +10,11 @@ import MdxRender from "@/components/markdoc/mdx-render";
 import TableOfContentsPopOver from "@/components/markdoc/table-of-contents-popover";
 
 import {getNoteById} from "./queries";
+type Props = {
+  params: {id: string};
+};
 
-export async function generateMetadata(params: {id: string}): Promise<Metadata> {
+export async function generateMetadata({params}: Props): Promise<Metadata> {
   const note = await getNoteById(params.id);
 
   return {
